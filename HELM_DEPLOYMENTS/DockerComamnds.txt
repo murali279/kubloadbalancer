@@ -58,6 +58,8 @@ http://murali.local/currency-conversion/from/EUR/to/INR/quantity/10
 
 Ingress thru Deployments
 ===========================
+minikube addon enable ingress
+minikube tunnel
 kubectl apply -f 04-ingress.yaml
 curl localhost/currency-exchange/from/USD/to/INR
 curl localhost/currency-conversion/from/EUR/to/INR/quantity/10
@@ -65,86 +67,12 @@ curl localhost/currency-conversion/from/EUR/to/INR/quantity/10
 Ingresses deployed:
 =============
 $ kubectl describe ingress currency-conversion
-Name:             currency-conversion
-Labels:           app.kubernetes.io/instance=currency-conversion
-                  app.kubernetes.io/managed-by=Helm
-                  app.kubernetes.io/name=currency-conversion
-                  app.kubernetes.io/version=1.16.0
-                  helm.sh/chart=currency-conversion-0.1.0
-Namespace:        default
-Address:          192.168.49.2
-Ingress Class:    <none>
-Default backend:  <default>
-Rules:
-  Host          Path  Backends
-  ----          ----  --------
-  murali.local
-                /currency-conversion/   currency-conversion:8100 (172.17.0.10:8100)
-Annotations:    kubernetes.io/ingress.class: nginx
-                meta.helm.sh/release-name: currency-conversion
-                meta.helm.sh/release-namespace: default
-                nginx.ingress.kubernetes.io/rewrite-target: /
-Events:
-  Type    Reason  Age                From                      Message
-  ----    ------  ----               ----                      -------
-  Normal  Sync    10s (x2 over 40s)  nginx-ingress-controller  Scheduled for sync
-
-OfficeWork@DESKTOP-SLU6JHH MINGW64 /d/MuraliCode/HF1/Kubernetes/Microservices/HELM_and_YAML_Deployments/HELM_DEPLOYMENTS (main)
-$ kubectl describe ingress currency-exchange
-Name:             currency-exchange
-Labels:           app.kubernetes.io/instance=currency-exchange
-                  app.kubernetes.io/managed-by=Helm
-                  app.kubernetes.io/name=currency-exchange
-                  app.kubernetes.io/version=1.0
-                  helm.sh/chart=currency-exchange-0.1.0
-Namespace:        default
-Address:          192.168.49.2
-Ingress Class:    <none>
-Default backend:  <default>
-Rules:
-  Host          Path  Backends
-  ----          ----  --------
-  murali.local
-                /currency-exchange/   currency-exchange:8000 (172.17.0.8:8000)
-Annotations:    kubernetes.io/ingress.class: nginx
-                meta.helm.sh/release-name: currency-exchange
-                meta.helm.sh/release-namespace: default
-                nginx.ingress.kubernetes.io/rewrite-target: /
-Events:
-  Type    Reason  Age                From                      Message
-  ----    ------  ----               ----                      -------
-  Normal  Sync    20s (x2 over 66s)  nginx-ingress-controller  Scheduled for sync
 
 Ingress to Work
 ==============
 1) Apply 04-ingress.yaml under Kubernetes_Microservices\Microservices\HELM_and_YAML_Deployments\MANUAL_YAML_DEPLOYMENTS
-(Remove annotations tag)
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: gateway-ingress
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /currency-exchange/
-        pathType: Prefix
-        backend:
-          service:
-           name: currency-exchange
-           port:
-              number: 8000     
-      - path:  /currency-conversion/
-        pathType: Prefix
-        backend:
-          service: 
-           name: currency-conversion
-           port:
-              number: 8100 
- 2) vi /etc/hosts      
- 
- 192.168.49.2 murali.com
-			  
+2) vi /etc/hosts      
+ 192.168.49.2 murali.com			  
 3) minikube tunnel			  
 			  
 4) WORKS
