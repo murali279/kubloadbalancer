@@ -1,0 +1,66 @@
+currency-exchange(1)
+===============
+$docker build -t  pmr27918791/currency-exchange:LOADBALANCER_VERSION .
+
+$ docker images
+REPOSITORY                                      TAG              IMAGE ID       CREATED          SIZE
+pmr27918791/currency-exchange                   0.0.1-LOADBALANCER_VERSION  12cae43d018d   13 minutes ago   153MB
+
+
+docker push pmr27918791/currency-exchange:LOADBALANCER_VERSION
+
+minikube service currency-exchange   
+http://127.0.0.1:62207/currency-exchange/from/USD/to/INR
+http://127.0.0.1:62207/currency-exchange/from/USD/to/INR
+
+
+Currency Conversion (2)
+================
+$docker build -t  pmr27918791/currency-conversion:LOADBALANCER_VERSION .
+$ docker images
+REPOSITORY                                      TAG              IMAGE ID       CREATED          SIZE
+pmr27918791/currency-conversion                 0.0.1-MINIKUBE   de2f5898c1ab   22 seconds ago   159MB
+
+
+docker push pmr27918791/currency-conversion:LOADBALANCER_VERSION
+
+minikube service currency-conversion
+http://127.0.0.1:64311/currency-conversion/from/EUR/to/INR/quantity/10
+
+
+
+Ingress to Work
+==============
+1) Apply 04-ingress.yaml under Kubernetes_Microservices\Microservices\HELM_and_YAML_Deployments\MANUAL_YAML_DEPLOYMENTS
+(Remove annotations tag)
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /currency-exchange/
+        pathType: Prefix
+        backend:
+          service:
+           name: currency-exchange
+           port:
+              number: 8000     
+      - path:  /currency-conversion/
+        pathType: Prefix
+        backend:
+          service: 
+           name: currency-conversion
+           port:
+              number: 8100 
+ 2) vi /etc/hosts      
+ 
+ 192.168.49.2 murali.com
+			  
+2) minikube tunnel			  
+			  
+3) WORKS
+http://murali.com/currency-exchange/from/USD/to/INR		
+  http://murali.com/currency-conversion/from/EUR/to/INR/quantity/10	  
