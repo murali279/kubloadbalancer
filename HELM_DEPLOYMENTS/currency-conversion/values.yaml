@@ -8,7 +8,7 @@ image:
   repository: pmr27918791/currency-conversion
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: LOADBALANCER_VERSION
+  tag: LOADBALANCER_REFACTOR
 
 imagePullSecrets: []
 nameOverride: ""

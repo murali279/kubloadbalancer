@@ -1,0 +1,6 @@
+com/poc/currencyconversionservice/util/environment/InstanceInformationService.class
+com/poc/currencyconversionservice/resource/CurrencyConversionController.class
+com/poc/currencyconversionservice/security/SecurityConfiguration.class
+com/poc/currencyconversionservice/resource/CurrencyExchangeServiceProxy.class
+com/poc/currencyconversionservice/CurrencyConversionServiceApplication.class
+com/poc/currencyconversionservice/resource/CurrencyConversionBean.class

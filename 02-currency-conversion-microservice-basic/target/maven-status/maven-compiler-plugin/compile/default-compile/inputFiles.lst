@@ -1,0 +1,6 @@
+/home/it/Work/cgi/kubloadbalancer/02-currency-conversion-microservice-basic/src/main/java/com/poc/currencyconversionservice/resource/CurrencyConversionController.java
+/home/it/Work/cgi/kubloadbalancer/02-currency-conversion-microservice-basic/src/main/java/com/poc/currencyconversionservice/util/environment/InstanceInformationService.java
+/home/it/Work/cgi/kubloadbalancer/02-currency-conversion-microservice-basic/src/main/java/com/poc/currencyconversionservice/resource/CurrencyConversionBean.java
+/home/it/Work/cgi/kubloadbalancer/02-currency-conversion-microservice-basic/src/main/java/com/poc/currencyconversionservice/security/SecurityConfiguration.java
+/home/it/Work/cgi/kubloadbalancer/02-currency-conversion-microservice-basic/src/main/java/com/poc/currencyconversionservice/CurrencyConversionServiceApplication.java
+/home/it/Work/cgi/kubloadbalancer/02-currency-conversion-microservice-basic/src/main/java/com/poc/currencyconversionservice/resource/CurrencyExchangeServiceProxy.java
