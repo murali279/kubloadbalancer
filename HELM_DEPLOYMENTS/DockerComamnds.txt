@@ -58,6 +58,7 @@ http://murali.local/currency-conversion/from/EUR/to/INR/quantity/10
 
 Ingress thru Deployments
 ===========================
+minikube addon enable ingress
 kubectl apply -f 04-ingress.yaml
 curl localhost/currency-exchange/from/USD/to/INR
 curl localhost/currency-conversion/from/EUR/to/INR/quantity/10
