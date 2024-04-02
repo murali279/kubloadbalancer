@@ -59,8 +59,8 @@ spec:
  
  192.168.49.2 murali.com
 			  
-2) minikube tunnel			  
+3) minikube tunnel			  
 			  
-3) WORKS
+4) WORKS
 http://murali.com/currency-exchange/from/USD/to/INR		
   http://murali.com/currency-conversion/from/EUR/to/INR/quantity/10	  
